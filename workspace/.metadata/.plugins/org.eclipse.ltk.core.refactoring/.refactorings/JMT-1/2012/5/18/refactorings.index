@@ -1,0 +1,24 @@
+1336134193783	Delete element
+1336134511507	Encapsulate field 'bankAccountNumber'
+1336134517681	Encapsulate field 'bankCardId'
+1336134522542	Encapsulate field 'pinCode'
+1336134526790	Encapsulate field 'balance'
+1336134585158	Encapsulate field 'bankAccountNumber'
+1336134592224	Encapsulate field 'bankCardId'
+1336134596522	Encapsulate field 'pinCode'
+1336134599796	Encapsulate field 'balance'
+1336134851880	Encapsulate field 'bankCardId'
+1336134855554	Encapsulate field 'pinCode'
+1336134886119	Encapsulate field 'account'
+1336134962340	Encapsulate field 'account'
+1336134965486	Encapsulate field 'username'
+1336134968792	Encapsulate field 'password'
+1336139412589	Encapsulate field 'clients'
+1336139417953	Encapsulate field 'cards'
+1336141036669	Copy file
+1336141059391	Move 'authenticationerror.jsp' to 'bank'
+1336145506115	Copy compilation units
+1336145570830	Copy compilation units
+1336145591417	Copy compilation units
+1336149951836	Rename package 'jmt.bank'
+1336150739487	Delete element

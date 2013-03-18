@@ -1,0 +1,139 @@
+package jmt.bank.shared;
+
+import java.rmi.RemoteException;
+
+import org.apache.axis2.AxisFault;
+import org.example.www.jmtbank.JMTBankStub;
+import org.example.www.jmtbank.JMTBankStub.AuthenticateCDClient;
+import org.example.www.jmtbank.JMTBankStub.*;
+
+public class BankService implements Authentication, Transaction {
+	private static BankService singleton;
+	
+	private JMTBankStub client;
+
+	private BankService () {
+		try {
+			//TODO: endpoint invullen
+			String endpoint = "http://localhost:10000/JMT-Bank-BankingLayer/services/JMTBank/";
+			client = new JMTBankStub(endpoint);
+		} catch (AxisFault e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static BankService getInstance() {
+		if(singleton == null) singleton = new BankService();
+		return singleton;
+	}
+	
+	@Override
+	public String transfer(String debitAccountId, String creditAccountId,
+			float amount) throws TransactionException {
+		String result = "";
+		try {
+			//Connect to the soap server
+			Transfer request = new Transfer();
+			request.setDebitAccountId(debitAccountId);
+			request.setCreditAccountId(creditAccountId);
+			request.setAmount(amount);
+			TransferResponse response = client.transfer(request);
+			if(response.getOut() != null) {
+				result = response.getOut();
+			} else {
+				result = "Successfully transferred &euro; " + amount + " to " + creditAccountId;
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return result; 
+	}
+
+	@Override
+	public String deposit(String creditAccountId, float amount) throws TransactionException {
+		String result = "";
+		try {
+			//Connect to the soap server
+			Deposit request = new Deposit();
+			request.setCreditAccountId(creditAccountId);
+			request.setAmount(amount);
+			DepositResponse response = client.deposit(request);
+			if(response.getOut() != null) {
+				result = response.getOut();
+			} else {
+				result = "Deposited &euro; " + amount + " to your account!";
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	@Override
+	public String withdraw(String debitAccountId, float amount) throws TransactionException {
+		String result = "";
+		try {
+			//Connect to the soap server
+			Withdraw request = new Withdraw();
+			request.setDebitAccountId(debitAccountId);
+			request.setAmount(amount);
+			WithdrawResponse response = client.withdraw(request);
+			if(response.getOut() != null) {
+				result = response.getOut();
+			} else {
+				result = "Withdrawn &euro; " + amount + " from your account!";
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	@Override
+	public float getBalance(String accountId) throws TransactionException {
+		float result = 0;
+		try {
+			//Connect to the soap server
+			GetBalance request = new GetBalance();
+			request.setAccountId(accountId);
+			GetBalanceResponse response = client.getBalance(request);
+			result = response.getOut();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	@Override
+	public void authenticateClient(String username, String password) throws AuthenticationException {
+		try {
+			//Connect to the soap server
+			AuthenticateHBClient request = new AuthenticateHBClient();
+			request.setPassword(password);
+			request.setUsername(username);
+			AuthenticateHBClientResponse response = client.authenticateHBClient(request);
+			if(response == null) {
+				throw new AuthenticationException("Invalid username and/or password!");
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void authenticateCard(String cardId, String PIN) throws AuthenticationException {
+		throw new AuthenticationException("Invalid Card and/or PIN!");
+//		try {
+//			//Connect to the soap server
+//			AuthenticateCDClient request = new AuthenticateCDClient();
+//			request.setCardId(cardId);
+//			request.setPIN(PIN);
+//			AuthenticateCDClientResponse response = client.authenticateCDClient(request);
+//			if(response == null) {
+//				throw new AuthenticationException("Invalid Card and/or PIN!");
+//			}
+//		} catch (RemoteException e) {
+//			e.printStackTrace();
+//		}
+	}
+}

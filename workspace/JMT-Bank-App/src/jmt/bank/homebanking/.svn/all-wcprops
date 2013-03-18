@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/tellis/JMT/!svn/ver/99/JMT-Bank-App/src/jmt/bank/homebanking
+END
+HomeBankingServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/tellis/JMT/!svn/ver/81/JMT-Bank-App/src/jmt/bank/homebanking/HomeBankingServlet.java
+END
+LoginServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/tellis/JMT/!svn/ver/99/JMT-Bank-App/src/jmt/bank/homebanking/LoginServlet.java
+END
+LogoutServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/tellis/JMT/!svn/ver/81/JMT-Bank-App/src/jmt/bank/homebanking/LogoutServlet.java
+END
+TransferServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/tellis/JMT/!svn/ver/92/JMT-Bank-App/src/jmt/bank/homebanking/TransferServlet.java
+END
+IndexServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/tellis/JMT/!svn/ver/99/JMT-Bank-App/src/jmt/bank/homebanking/IndexServlet.java
+END
+CheckBalanceServlet.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/tellis/JMT/!svn/ver/92/JMT-Bank-App/src/jmt/bank/homebanking/CheckBalanceServlet.java
+END

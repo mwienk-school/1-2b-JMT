@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="JMTBank" targetNamespace="http://www.example.org/JMTBank/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.example.org/JMTBank/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.example.org/JMTBank/">
+      <xsd:element name="transfer">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element name="debitAccountId" type="xsd:string"/>
+          	<xsd:element name="creditAccountId" type="xsd:string"/>
+          	<xsd:element name="amount" type="xsd:float"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="transferResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="deposit">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="creditAccountId" type="xsd:string">
+      			</xsd:element>
+      			<xsd:element name="amount" type="xsd:float"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="depositResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="out" type="xsd:string"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="withdraw">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="debitAccountId" type="xsd:string">
+      			</xsd:element>
+      			<xsd:element name="amount" type="xsd:float"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="withdrawResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="out" type="xsd:string"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getBalance">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="accountId" type="xsd:string"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getBalanceResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="out" type="xsd:float"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="authenticateHBClient">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="username" type="xsd:string"/>
+      			<xsd:element name="password" type="xsd:string"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="authenticateHBClientResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="out" type="tns:Client"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="authenticateCDClient">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="cardId" type="xsd:string"/>
+      			<xsd:element name="PIN" type="xsd:string"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="authenticateCDClientResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="out" type="xsd:string"/>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    
+            <xsd:complexType name="Client">
+            	<xsd:sequence>
+            		<xsd:element name="userName" type="xsd:string"/>
+            		<xsd:element name="password" type="xsd:string"/>
+            		<xsd:element name="accountId" type="xsd:string"/>
+            		<xsd:element name="FirstName" type="xsd:string"/>
+            	</xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="transferFault">
+            	<xsd:complexType>
+            		<xsd:sequence>
+            			<xsd:element name="transferFault" type="xsd:string">
+            			</xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+            <xsd:element name="transferFault1">
+            	<xsd:complexType>
+            		<xsd:sequence>
+
+            			<xsd:element name="transferFault1" type="xsd:string">
+            			</xsd:element>
+            		</xsd:sequence>
+            	</xsd:complexType>
+            </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="authenticateHBClientRequest">
+    <wsdl:part name="parameters" element="tns:authenticateHBClient">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBalanceResponse">
+    <wsdl:part name="parameters" element="tns:getBalanceResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="authenticateCDClientRequest">
+    <wsdl:part name="parameters" element="tns:authenticateCDClient">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="depositResponse">
+    <wsdl:part name="parameters" element="tns:depositResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="withdrawRequest">
+    <wsdl:part name="parameters" element="tns:withdraw">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="transferResponse">
+    <wsdl:part name="parameters" element="tns:transferResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="authenticateHBClientResponse">
+    <wsdl:part name="parameters" element="tns:authenticateHBClientResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="authenticateCDClientResponse">
+    <wsdl:part name="parameters" element="tns:authenticateCDClientResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBalanceRequest">
+    <wsdl:part name="parameters" element="tns:getBalance">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="transferRequest">
+    <wsdl:part name="parameters" element="tns:transfer">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="withdrawResponse">
+    <wsdl:part name="parameters" element="tns:withdrawResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="depositRequest">
+    <wsdl:part name="parameters" element="tns:deposit">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="JMTBank">
+    <wsdl:operation name="transfer">
+      <wsdl:input message="tns:transferRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:transferResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deposit">
+      <wsdl:input message="tns:depositRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:depositResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="withdraw">
+      <wsdl:input message="tns:withdrawRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:withdrawResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBalance">
+      <wsdl:input message="tns:getBalanceRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getBalanceResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authenticateHBClient">
+      <wsdl:input message="tns:authenticateHBClientRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:authenticateHBClientResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authenticateCDClient">
+      <wsdl:input message="tns:authenticateCDClientRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:authenticateCDClientResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="JMTBankSOAP" type="tns:JMTBank">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="transfer">
+      <soap:operation soapAction="http://www.example.org/JMTBank/transfer"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deposit">
+      <soap:operation soapAction="http://www.example.org/JMTBank/transfer"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="withdraw">
+      <soap:operation soapAction="http://www.example.org/JMTBank/transfer"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBalance">
+      <soap:operation soapAction="http://www.example.org/JMTBank/transfer"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authenticateHBClient">
+      <soap:operation soapAction="http://www.example.org/JMTBank/transfer"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="authenticateCDClient">
+      <soap:operation soapAction="http://www.example.org/JMTBank/transfer"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="JMTBank">
+    <wsdl:port name="JMTBankSOAP" binding="tns:JMTBankSOAP">
+      <soap:address location="http://www.example.org/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item value="true" key="J2EE_EXPORT_OVERWRITE"/>
+	<item value="false" key="J2EE_EXPORT_SOURCE"/>
+	<list key="J2EE_EXPORT_JST_WEB">
+		<item value="/home/mark/Apps/Java/apache-tomcat-6.0.35/webapps/bank.war"/>
+		<item value="/home/mark/Apps/Java/apache-tomcat-6.0.35_9080/webapps/JMT-Bank-BankingLayer.war"/>
+	</list>
+	<list key="MRU_RUNTIME_STORE">
+		<item value="Apache Tomcat v6.0"/>
+	</list>
+</section>

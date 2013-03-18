@@ -1,0 +1,61 @@
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
+
+DROP SCHEMA IF EXISTS `jmtbank` ;
+CREATE SCHEMA IF NOT EXISTS `jmtbank` DEFAULT CHARACTER SET latin1 ;
+USE `jmtbank` ;
+
+-- -----------------------------------------------------
+-- Table `jmtbank`.`account`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `jmtbank`.`account` (
+  `accountId` VARCHAR(10) NOT NULL ,
+  `balance` FLOAT NOT NULL DEFAULT '0' ,
+  PRIMARY KEY (`accountId`) )
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `jmtbank`.`bankcard`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `jmtbank`.`bankcard` (
+  `cardId` VARCHAR(10) NOT NULL ,
+  `accountId` VARCHAR(10) NOT NULL ,
+  `pin` VARCHAR(5) NOT NULL ,
+  PRIMARY KEY (`cardId`) ,
+  INDEX `fk_bankcard_account` (`accountId` ASC) ,
+  CONSTRAINT `fk_bankcard_account`
+    FOREIGN KEY (`accountId` )
+    REFERENCES `jmtbank`.`account` (`accountId` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `jmtbank`.`client`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `jmtbank`.`client` (
+  `username` VARCHAR(10) NOT NULL ,
+  `accountId` VARCHAR(10) NOT NULL ,
+  `password` VARCHAR(10) NOT NULL ,
+  `firstname` VARCHAR(255) NULL DEFAULT NULL ,
+  `lastname` VARCHAR(255) NULL DEFAULT NULL ,
+  PRIMARY KEY (`username`) ,
+  INDEX `fk_client_account1` (`accountId` ASC) ,
+  CONSTRAINT `fk_client_account1`
+    FOREIGN KEY (`accountId` )
+    REFERENCES `jmtbank`.`account` (`accountId` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

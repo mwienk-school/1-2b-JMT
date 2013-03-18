@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/tellis/JMT/!svn/ver/13/JMT-1/classes/jmt/bank
+END
+AuthenticationException.class
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/tellis/JMT/!svn/ver/13/JMT-1/classes/jmt/bank/AuthenticationException.class
+END
+Authentication.class
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/tellis/JMT/!svn/ver/13/JMT-1/classes/jmt/bank/Authentication.class
+END
+Transaction.class
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/tellis/JMT/!svn/ver/13/JMT-1/classes/jmt/bank/Transaction.class
+END
+TransactionException.class
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/tellis/JMT/!svn/ver/13/JMT-1/classes/jmt/bank/TransactionException.class
+END

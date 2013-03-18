@@ -1,0 +1,119 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/tellis/JMT/!svn/ver/111/JMT-Bank-BankingLayer/src/org/example/www/jmtbank
+END
+TransferResponse.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/tellis/JMT/!svn/ver/64/JMT-Bank-BankingLayer/src/org/example/www/jmtbank/TransferResponse.java
+END
+Client.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/tellis/JMT/!svn/ver/64/JMT-Bank-BankingLayer/src/org/example/www/jmtbank/Client.java
+END
+Transfer.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/tellis/JMT/!svn/ver/64/JMT-Bank-BankingLayer/src/org/example/www/jmtbank/Transfer.java
+END
+WithdrawResponse.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/tellis/JMT/!svn/ver/64/JMT-Bank-BankingLayer/src/org/example/www/jmtbank/WithdrawResponse.java
+END
+Withdraw.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/tellis/JMT/!svn/ver/64/JMT-Bank-BankingLayer/src/org/example/www/jmtbank/Withdraw.java
+END
+GetBalanceResponse.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/tellis/JMT/!svn/ver/64/JMT-Bank-BankingLayer/src/org/example/www/jmtbank/GetBalanceResponse.java
+END
+GetBalance.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/tellis/JMT/!svn/ver/64/JMT-Bank-BankingLayer/src/org/example/www/jmtbank/GetBalance.java
+END
+AuthenticateCDClientResponse.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/tellis/JMT/!svn/ver/66/JMT-Bank-BankingLayer/src/org/example/www/jmtbank/AuthenticateCDClientResponse.java
+END
+AuthenticateCDClient.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/tellis/JMT/!svn/ver/64/JMT-Bank-BankingLayer/src/org/example/www/jmtbank/AuthenticateCDClient.java
+END
+ExtensionMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/tellis/JMT/!svn/ver/64/JMT-Bank-BankingLayer/src/org/example/www/jmtbank/ExtensionMapper.java
+END
+JMTBankMessageReceiverInOut.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/tellis/JMT/!svn/ver/64/JMT-Bank-BankingLayer/src/org/example/www/jmtbank/JMTBankMessageReceiverInOut.java
+END
+DepositResponse.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/tellis/JMT/!svn/ver/64/JMT-Bank-BankingLayer/src/org/example/www/jmtbank/DepositResponse.java
+END
+JMTBankSkeletonInterface.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/tellis/JMT/!svn/ver/67/JMT-Bank-BankingLayer/src/org/example/www/jmtbank/JMTBankSkeletonInterface.java
+END
+Deposit.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/tellis/JMT/!svn/ver/64/JMT-Bank-BankingLayer/src/org/example/www/jmtbank/Deposit.java
+END
+AuthenticateHBClientResponse.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/tellis/JMT/!svn/ver/64/JMT-Bank-BankingLayer/src/org/example/www/jmtbank/AuthenticateHBClientResponse.java
+END
+AuthenticateHBClient.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/tellis/JMT/!svn/ver/64/JMT-Bank-BankingLayer/src/org/example/www/jmtbank/AuthenticateHBClient.java
+END
+JMTBankSkeleton.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/tellis/JMT/!svn/ver/111/JMT-Bank-BankingLayer/src/org/example/www/jmtbank/JMTBankSkeleton.java
+END
+TransferFault1.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/tellis/JMT/!svn/ver/64/JMT-Bank-BankingLayer/src/org/example/www/jmtbank/TransferFault1.java
+END
+TransferFault.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/tellis/JMT/!svn/ver/64/JMT-Bank-BankingLayer/src/org/example/www/jmtbank/TransferFault.java
+END

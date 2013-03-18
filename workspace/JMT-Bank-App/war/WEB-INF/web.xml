@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://java.sun.com/xml/ns/javaee"
+xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+
+	<servlet>
+		<servlet-name>Set_Soap_Server</servlet-name>
+		<servlet-class>jmt.bank.SetSoapServerServlet</servlet-class>
+	</servlet>	
+	<servlet-mapping>
+		<servlet-name>Set_Soap_Server</servlet-name>
+		<url-pattern>/set-soap-server</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>HomeBanking_Index</servlet-name>
+		<servlet-class>jmt.bank.homebanking.IndexServlet</servlet-class>
+	</servlet>	
+	<servlet-mapping>
+		<servlet-name>HomeBanking_Index</servlet-name>
+		<url-pattern>/homebanking</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>HomeBanking_Login</servlet-name>
+		<servlet-class>jmt.bank.homebanking.LoginServlet</servlet-class>
+	</servlet>	
+	<servlet-mapping>
+		<servlet-name>HomeBanking_Login</servlet-name>
+		<url-pattern>/homebanking/login</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>HomeBanking_CheckBalance</servlet-name>
+		<servlet-class>jmt.bank.homebanking.CheckBalanceServlet</servlet-class>
+	</servlet>	
+	<servlet-mapping>
+		<servlet-name>HomeBanking_CheckBalance</servlet-name>
+		<url-pattern>/homebanking/check-balance</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>HomeBanking_Transfer</servlet-name>
+		<servlet-class>jmt.bank.homebanking.TransferServlet</servlet-class>
+	</servlet>	
+	<servlet-mapping>
+		<servlet-name>HomeBanking_Transfer</servlet-name>
+		<url-pattern>/homebanking/transfer</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>HomeBanking_Logout</servlet-name>
+		<servlet-class>jmt.bank.homebanking.LogoutServlet</servlet-class>
+	</servlet>	
+	<servlet-mapping>
+		<servlet-name>HomeBanking_Logout</servlet-name>
+		<url-pattern>/homebanking/logout</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>CashDispensing_Index</servlet-name>
+		<servlet-class>jmt.bank.cashdispensing.IndexServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CashDispensing_Index</servlet-name>
+		<url-pattern>/cashdispensing</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>CashDispensing_Login</servlet-name>
+		<servlet-class>jmt.bank.cashdispensing.LoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CashDispensing_Login</servlet-name>
+		<url-pattern>/cashdispensing/login</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>CashDispensing_CheckBalance</servlet-name>
+		<servlet-class>jmt.bank.cashdispensing.CheckBalanceServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CashDispensing_CheckBalance</servlet-name>
+		<url-pattern>/cashdispensing/check-balance</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>CashDispensing_Logout</servlet-name>
+		<servlet-class>jmt.bank.cashdispensing.LogoutServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CashDispensing_Logout</servlet-name>
+		<url-pattern>/cashdispensing/logout</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>CashDispensing_Deposit</servlet-name>
+		<servlet-class>jmt.bank.cashdispensing.DepositServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CashDispensing_Deposit</servlet-name>
+		<url-pattern>/cashdispensing/deposit</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>CashDispensing_Withdraw</servlet-name>
+		<servlet-class>jmt.bank.cashdispensing.WithdrawServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CashDispensing_Withdraw</servlet-name>
+		<url-pattern>/cashdispensing/withdraw</url-pattern>
+	</servlet-mapping>
+	
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>

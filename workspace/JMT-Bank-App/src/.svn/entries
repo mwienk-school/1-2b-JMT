@@ -1,0 +1,81 @@
+10
+
+dir
+112
+https://tellis.sourcerepo.com/tellis/JMT/JMT-Bank-App/src
+https://tellis.sourcerepo.com/tellis/JMT
+
+
+
+2012-06-04T22:37:29.570370Z
+102
+MarkWienk
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+5a223ed3-164e-4c03-98ce-0ad6012fea58
+
+
+
+
+
+
+0
+
+META-INF
+dir
+
+com
+dir
+
+jmt
+dir
+
+log4j.properties
+file
+
+
+
+
+2012-06-02T14:01:29.000000Z
+a77e63b9d7e53571da14b706d8a45fdb
+2012-06-02T14:41:07.390701Z
+81
+MarkWienk
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1063
+
+test
+dir
+

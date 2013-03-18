@@ -1,0 +1,182 @@
+package bank;
+
+import java.net.URL;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.rmi.server.UnicastRemoteObject;
+
+import bank.authentication.Authentication;
+import bank.authentication.AuthenticationImpl;
+import bank.banking.*;
+import bank.interbanking.Interbank;
+
+public class BankService {
+	private static BankService singleton;
+	private Authentication auth;
+	private Transaction trans;
+	private TransactionProcessing tp;
+	private Interbank interbank;
+	
+	public static final String BANK_ID = "001";
+	
+	/**
+	 * Returns the BankService singleton object
+	 * @return
+	 */
+	public static BankService getBankService() {
+		if(singleton == null) {
+			singleton = new BankService();
+			singleton.init();
+		}
+		return singleton;
+	}
+	
+	/**
+	 * Return the Authentication implementation
+	 * @return
+	 */
+	public Authentication getAuth() {
+		return this.auth;
+	}
+	
+	/**
+	 * Return the Transaction implementation
+	 * @return
+	 */
+	public Transaction getTrans() {
+		return this.trans;
+	}
+	
+	/**
+	 * Return the TransactionProcessing implementation
+	 * @return
+	 */
+	public TransactionProcessing getTransactionProcessing() {
+		return this.tp;
+	}
+	
+	/**
+	 * Return the Interbank implementation
+	 * @return
+	 */
+	public Interbank getInterbank() {
+		return this.interbank;
+	}
+
+	/**
+	 * Initialize the BankService
+	 * 	-Initialize the Auth and Trans implementations
+	 *  -Bind to the registry
+	 */
+	public void init() {
+		auth = new AuthenticationImpl();
+		trans = new TransactionImpl();
+		tp = new TransactionProcessingImpl();
+		
+		// load security policy
+		// as a resource
+		ClassLoader cl = getClass().getClassLoader(); 
+		URL policyURL = cl.getResource("server.policy");
+		System.setProperty("java.security.policy", policyURL.toString());
+		
+		// set code base property		
+		System.setProperty("java.rmi.server.codebase", "http://static.shadesofblue.nl/JMTBank-interfaces.jar");
+		
+		if (System.getSecurityManager() == null) {
+			 System.setSecurityManager(new SecurityManager()); 
+		}
+		
+		// setup interbank
+		try {
+			// Get RMI registry on InterBank host
+			Registry registry = LocateRegistry.getRegistry("ewi887.ewi.utwente.nl");
+			System.out.println("InterBank RMI registry retrieved");
+			
+			// bind to InterBank object
+			interbank = (Interbank) registry.lookup("InterBank");
+			System.out.println("Interbank bound");
+		} catch (Exception e) {
+			System.err.println("InterBank Exception: ");
+			e.printStackTrace();
+		}
+	}
+	
+	public void initRmi () throws RemoteException {
+		Registry registry = LocateRegistry.getRegistry();
+		System.out.println("RMI registry retrieved");
+		
+		Authentication authStub = (Authentication) UnicastRemoteObject
+				.exportObject(auth, 0);
+		System.out.println("AuthenticationImpl exported");
+		registry.rebind("Authentication", authStub);
+		System.out.println("AuthenticationImpl bound");
+	
+		Transaction transStub = (Transaction) UnicastRemoteObject.exportObject(
+				trans, 0);
+		System.out.println("Transaction exported");
+		registry.rebind("Transaction", transStub);
+		System.out.println("TransactionImpl bound");
+		
+		
+		try {
+			TransactionProcessing stub = (TransactionProcessing) UnicastRemoteObject.exportObject(
+					tp, 0);
+			registry.rebind("tp1", stub);
+			System.out.println("TransactionProcessingImpl locally bound");
+		} catch (Exception e) {
+			System.err.println("TransactionProcessingImpl exception:");
+			e.printStackTrace();
+		}
+		
+		try {
+			// register own RMI objects with InterBank
+			String myHost = "";
+			//myHost = "127.0.0.1";
+			myHost = "130.89.236.84";
+			
+			interbank.registerTransactionProcessor("001", myHost, "tp1");
+			System.out.println("Transaction processor bound to InterBank registry.");
+			interbank.registerAuthenticator("001", myHost, "Authentication");
+			System.out.println("Authentication processor bound to InterBank registry.");
+			
+			System.out.println("Interbank entities:");
+			for(String str : interbank.listAuthenticators()) {
+				System.out.println("A:" + str);
+			}
+			for(String str : interbank.listTransactionProcessors()) {
+				System.out.println("T:" + str);
+			}
+			try{
+				interbank.lookupAuthenticator("001");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} catch (Exception e) {
+			System.err.println("InterBank exception:");
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Initializes the BankService
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		BankService bankService = getBankService();
+		
+		try {
+			bankService.initRmi();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Singleton constructor
+	 */
+	private BankService() {};
+
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>Students Form</TITLE>
+<LINK REL=STYLESHEET HREF="styles.css" TYPE="text/css">
+</HEAD>
+<BODY>
+<H1>Students Form</H1>
+
+<FORM ACTION="/studentsForm/studentsFormServlet" METHOD="GET"
+	ENCTYPE="application/x-www-form/urlencoded">First name: <INPUT
+	TYPE="TEXT" NAME="FirstName" VALUE="Pietje"><BR>
+Last name: <INPUT TYPE="TEXT" NAME="LastName"><BR>
+Password: <INPUT TYPE="PASSWORD" NAME="Password"><BR>
+Gender: <INPUT TYPE="RADIO" NAME="Gender" VALUE="male" CHECKED>male
+<INPUT TYPE="RADIO" NAME="Gender" VALUE="female">female<BR>
+<P><INPUT TYPE="CHECKBOX" NAME="Internship">Check if you
+have completed an internship</P>
+<P>Completed courses: <SELECT NAME="Courses" MULTIPLE SIZE=2>
+	<OPTION VALUE="P1">Programming 1
+	<OPTION VALUE="P2">Programming 2
+	<OPTION VALUE="JMT">Java Middleware Technologies
+	<OPTION VALUE="WS-SOA">Service-Oriented Architectures with Web
+	Services
+</SELECT></P>
+
+<INPUT TYPE="SUBMIT" NAME="Add" VALUE="Add user"> <INPUT
+	TYPE="SUBMIT" NAME="Rem" VALUE="Remove user"><BR>
+<BR>
+<INPUT TYPE="RESET" VALUE="Defaults"><BR>
+</FORM>
+</BODY>

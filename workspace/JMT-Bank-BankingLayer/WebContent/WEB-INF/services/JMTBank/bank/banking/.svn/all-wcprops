@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/tellis/JMT/!svn/ver/63/JMT-Bank-BankingLayer/bin/bank/banking
+END
+Transaction.class
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/tellis/JMT/!svn/ver/62/JMT-Bank-BankingLayer/bin/bank/banking/Transaction.class
+END
+TransactionImpl.class
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/tellis/JMT/!svn/ver/63/JMT-Bank-BankingLayer/bin/bank/banking/TransactionImpl.class
+END
+TransactionProcessing.class
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/tellis/JMT/!svn/ver/62/JMT-Bank-BankingLayer/bin/bank/banking/TransactionProcessing.class
+END
+TransactionException.class
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/tellis/JMT/!svn/ver/62/JMT-Bank-BankingLayer/bin/bank/banking/TransactionException.class
+END

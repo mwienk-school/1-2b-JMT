@@ -1,0 +1,214 @@
+package jmt.test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import jmt.bank.beans.*;
+
+public class TestBeans {
+	
+	public void start () {
+		System.out.println("------------------------");
+		System.out.println("Testing Java Beans");
+		System.out.println("------------------------");
+		System.out.println("Testing: Account");
+		System.out.println("------------------------");
+		
+		testAccount();
+		
+		System.out.println("------------------------");
+		System.out.println("Testing: Client");
+		System.out.println("------------------------");
+		
+		testClient();
+		
+		System.out.println("------------------------");
+		System.out.println("Testing: BankCard");
+		System.out.println("------------------------");
+		
+		testBankCard();
+	}
+	
+	public void testBankCard () {
+		BankCard bankCard = new BankCard(new Account(), "card1", "1234");
+		
+		// test constructor
+		System.out.println("testBankCard: constructor:");
+		if (bankCard.getBankCardId().equals("card1") && bankCard.getPinCode().equals("1234")) {
+			System.out.println("Test result: Success");
+		} else {
+			System.out.println("Test result: FAILED");
+			System.out.println("Expected result: card1, 1234");
+			System.out.println("Actual result:" + bankCard.getBankCardId() + ", " + bankCard.getPinCode());
+		}
+		
+		// test cardid
+		bankCard.setBankCardId("card2");
+		System.out.println("testBankCard: set/get BankCardId:");
+		if (bankCard.getBankCardId().equals("card2")) {
+			System.out.println("Test result: Success");
+		} else {
+			System.out.println("Test result: FAILED");
+			System.out.println("Expected result: card2");
+			System.out.println("Actual result:" + bankCard.getBankCardId());
+		}
+		
+		// test pincode
+		bankCard.setPinCode("0000");
+		System.out.println("testBankCard: set/get PinCode:");
+		if (bankCard.getPinCode().equals("0000")) {
+			System.out.println("Test result: Success");
+		} else {
+			System.out.println("Test result: FAILED");
+			System.out.println("Expected result: 0000");
+			System.out.println("Actual result:" + bankCard.getPinCode());
+		}
+		
+		// test account
+		Account account = new Account();
+		bankCard.setAccount(account);
+		System.out.println("testBankCard: set/get account:");
+		if (bankCard.getAccount() == account) {
+			System.out.println("Test result: Success");
+		} else {
+			System.out.println("Test result: FAILED");
+			System.out.println("Expected result: " + account);
+			System.out.println("Actual result:" + bankCard.getAccount());
+		}
+	}
+	
+	public void testClient() {
+		Client client = new Client(new Account(), "testName", "testUsername", "testPassword");
+		
+		// test constructor
+		System.out.println("testClient: constructor:");
+		if (client.getName().equals("testName") && 
+				client.getUsername().equals("testUsername") && 
+				client.getPassword().equals("testPassword")) {
+			System.out.println("Test result: Success");
+		} else {
+			System.out.println("Test result: FAILED");
+			System.out.println("Expected result: testName, testUsername, testPassword");
+			System.out.println("Actual result:" + client.getName() + ", " + client.getUsername() + ", " + client.getPassword());
+		}
+		
+		// test name
+		client.setName("testNewName");
+		System.out.println("testClient: set/get name:");
+		if (client.getName().equals("testNewName")) {
+			System.out.println("Test result: Success");
+		} else {
+			System.out.println("Test result: FAILED");
+			System.out.println("Expected result: testNewName");
+			System.out.println("Actual result:" + client.getName());
+		}
+		
+		// test username
+		client.setUsername("testNewUsername");
+		System.out.println("testClient: set/get username:");
+		if (client.getUsername().equals("testNewUsername")) {
+			System.out.println("Test result: Success");
+		} else {
+			System.out.println("Test result: FAILED");
+			System.out.println("Expected result: testNewUsername");
+			System.out.println("Actual result:" + client.getUsername());
+		}
+		
+		// test password
+		client.setName("testNewPassword");
+		System.out.println("testClient: set/get password:");
+		if (client.getName().equals("testNewPassword")) {
+			System.out.println("Test result: Success");
+		} else {
+			System.out.println("Test result: FAILED");
+			System.out.println("Expected result: testNewPassword");
+			System.out.println("Actual result:" + client.getPassword());
+		}
+		
+		// test account
+		Account account = new Account();
+		client.setAccount(account);
+		System.out.println("testClient: set/get account:");
+		if (client.getAccount() == account) {
+			System.out.println("Test result: Success");
+		} else {
+			System.out.println("Test result: FAILED");
+			System.out.println("Expected result: " + account);
+			System.out.println("Actual result:" + client.getAccount());
+		}
+		
+	}
+	
+	public void testAccount () {
+		Account account = new Account();
+		
+		account.setBalance(500);
+		System.out.println("testAccount: set/get balance:");
+		if (account.getBalance() == 500) {
+			System.out.println("Test result: Success");
+		} else {
+			System.out.println("Test result: FAILED");
+			System.out.println("Expected result: 500");
+			System.out.println("Actual result:" + account.getBalance());
+		}
+		
+		account.setBankAccountNumber("123456789");
+		System.out.println("testAccount: set/get bank account number:");
+		if (account.getBankAccountNumber().equals("123456789")) {
+			System.out.println("Test result: Success");
+		} else {
+			System.out.println("Test result: FAILED");
+			System.out.println("Expected result: 123456789");
+			System.out.println("Actual result:" + account.getBankAccountNumber());
+		}
+		
+		account.addClient("Test","test","test");
+		System.out.println("testAccount: add client:");
+		if (account.getClients().size() == 1) {
+			System.out.println("Test result: Success");
+		} else {
+			System.out.println("Test result: FAILED");
+			System.out.println("Expected result: 1 client");
+			System.out.println("Actual result: " + account.getClients().size() + " clients");
+		}
+		
+		List<Client> clients = new ArrayList<Client>();
+		clients.add(new Client());
+		clients.add(new Client());
+		account.setClients(clients);
+		System.out.println("testAccount: set clients:");
+		if (account.getClients().size() == 2) {
+			System.out.println("Test result: Success");
+		} else {
+			System.out.println("Test result: FAILED");
+			System.out.println("Expected result: 2 clients");
+			System.out.println("Actual result: " + account.getClients().size() + " clients");
+		}
+		
+		account.addCard("card", "1234");
+		System.out.println("testAccount: add card:");
+		if (account.getCards().size() == 1) {
+			System.out.println("Test result: Success");
+		} else {
+			System.out.println("Test result: FAILED");
+			System.out.println("Expected result: 1 card");
+			System.out.println("Actual result: " + account.getCards().size() + " cards");
+		}
+		
+		List<BankCard> cards = new ArrayList<BankCard>();
+		cards.add(new BankCard(account, "card1", "1234"));
+		cards.add(new BankCard(account, "card2", "1234"));
+		account.setCards(cards);
+		System.out.println("testAccount: set cards:");
+		if (account.getCards().size() == 2) {
+			System.out.println("Test result: Success");
+		} else {
+			System.out.println("Test result: FAILED");
+			System.out.println("Expected result: 2 cards");
+			System.out.println("Actual result: " + account.getCards().size() + " cards");
+		}
+	}
+	
+	
+	
+}

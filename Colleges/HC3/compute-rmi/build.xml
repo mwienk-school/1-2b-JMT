@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<project name="RMI tutorial" default="" basedir=".">
+	<description>
+	  Ant build file to build and run the compute engine example of the RMI tutorial.
+		Steps in the development, deployment and execution process are
+		made explicit.
+	</description>
+	
+	<!-- set global properties for this build in a separate file -->
+	<property file="compute.properties" />
+
+	<!-- target clean: remove all classes and files for download -->
+	<target name="clean">
+		<delete includeemptydirs="true">
+			<fileset dir="bin" includes="**/*" />
+		</delete>
+		<delete file="${dist}/${server_file}" />
+		<delete file="${server_download_dir}/${server_file}" />
+		<delete file="${client_download_dir}/${client_imports}" />
+	</target>
+
+	<!-- target compile_interface: compile only server interface definitions -->
+	<target name="compile_interface">
+		<!-- only works if Ant source search is disabled with empty sourcepath -->
+		<javac sourcepath="" srcdir="${sources}" destdir="${classes}">
+			<include name="${server_interface}" />
+			<exclude name="${client_package}, ${server_package}" />
+		</javac>
+	</target>
+	
+	<!-- target dist_interface: makes jar file and places it at a downloadable place -->
+	<target name="dist_interface" depends="compile_interface">
+		<jar destfile="${dist}/${server_file}" basedir="${classes}" excludes="${client_package}, ${server_package}" />
+		<copy file="${dist}/${server_file}" todir="${server_download_dir}" />
+	</target>
+
+	<!-- target compile_server: compile server implementation -->
+	<target name="compile_server" depends="dist_interface">
+		<javac sourcepath="" srcdir="${sources}" destdir="${classes}" classpath="${dist}/${server_file}">
+			<include name="${server_package}" />
+			<exclude name="${server_interface}, ${client_package}" />
+		</javac>
+	</target>
+
+	<!-- target compile_client: compile client implementation -->
+	<target name="compile_client" depends="dist_interface">
+		<javac sourcepath="" srcdir="${sources}" destdir="${classes}" classpath="${dist}/${server_file}">
+			<include name="${client_package}" />
+			<exclude name="${server_interface}, ${server_package}" />
+		</javac>
+	</target>
+	
+	<!-- target dist_client: distribute exports of the client  -->
+	<target name="dist_client" depends="compile_client">
+		<echo>
+ Deploying ${client_exports} to ${client_download_dir}/client
+ URL: ${server_URL}
+		</echo>
+		<copy file="${client_exports}"
+			todir="$${client_download_dir}/client"
+			overwrite="true"/>
+	</target>
+
+	<!-- target start_registry: start the RMI registry -->
+	<target name="start_registry">
+		<exec executable="rmiregistry" spawn="true">
+		</exec>
+	</target>
+	
+	<!-- target start_server: start the server implementation -->
+	<target name="start_server" depends="compile_server">
+		<java classname="${server_impl}" classpath="${classes}" fork="true">
+			<!-- JVM arguments are necessary in order to allow code download 
+				and to define the security policy --> 
+			<jvmarg value="-Djava.rmi.server.codebase=${server_URL}" />
+			<jvmarg value="-Djava.rmi.server.hostname=${server_host}" />
+			<jvmarg value="-Djava.security.policy=server.policy" />
+		</java>
+	</target>
+	
+	<!-- target start_client: start the client implementation -->
+	<target name="start_client" depends="compile_client">
+		<java classname="${client_impl}" classpath="${classes}" fork="true">
+			<arg value="${server_host}" />
+			<arg value="20" />
+			<!-- JVM arguments are necessary in order to allow code download 
+				and to define the security policy --> 
+			<jvmarg value="-Djava.rmi.server.codebase=${client_URL}" />
+			<jvmarg value="-Djava.security.policy=client.policy" />
+		</java>
+	</target>
+
+</project>

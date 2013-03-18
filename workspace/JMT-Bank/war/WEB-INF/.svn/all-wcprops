@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/tellis/JMT/!svn/ver/35/JMT-Bank/war/WEB-INF
+END
+logging.properties
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/tellis/JMT/!svn/ver/16/JMT-Bank/war/WEB-INF/logging.properties
+END
+appengine-web.xml
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/tellis/JMT/!svn/ver/23/JMT-Bank/war/WEB-INF/appengine-web.xml
+END
+web.xml
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/tellis/JMT/!svn/ver/16/JMT-Bank/war/WEB-INF/web.xml
+END

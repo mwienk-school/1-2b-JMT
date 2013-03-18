@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/tellis/JMT/!svn/ver/13/JMT-1/web/WEB-INF/bank
+END
+authenticationsuccess.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/tellis/JMT/!svn/ver/12/JMT-1/web/WEB-INF/bank/authenticationsuccess.jsp
+END
+authenticationerror.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/tellis/JMT/!svn/ver/13/JMT-1/web/WEB-INF/bank/authenticationerror.jsp
+END

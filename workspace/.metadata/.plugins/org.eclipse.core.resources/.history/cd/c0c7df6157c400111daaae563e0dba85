@@ -1,0 +1,13 @@
+grant {
+	permission java.net.SocketPermission "*.ewi.utwente.nl:1099", 	"connect";
+	permission java.net.SocketPermission "127.0.0.1:1099",	 		"connect";
+	permission java.net.SocketPermission "130.89.12.117:58190", 	"connect,resolve";
+	permission java.net.SocketPermission "127.0.0.1",		"connect,resolve";
+
+	permission java.net.SocketPermission "*.ewi.utwente.nl",		"accept";
+	permission java.net.SocketPermission "127.0.0.1",				"accept";
+	permission java.net.SocketPermission "127.0.0.1:3306",			"connect, resolve";
+	permission java.util.PropertyPermission "file.encoding",		"read";
+
+	permission java.security.AllPermission;
+};

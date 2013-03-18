@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/tellis/JMT/!svn/ver/34/JMT-Bank/src/jmt/bank/client
+END
+JMT_Bank.java
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/tellis/JMT/!svn/ver/33/JMT-Bank/src/jmt/bank/client/JMT_Bank.java
+END
+BankService.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/tellis/JMT/!svn/ver/27/JMT-Bank/src/jmt/bank/client/BankService.java
+END
+ContentContainer.java
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/tellis/JMT/!svn/ver/32/JMT-Bank/src/jmt/bank/client/ContentContainer.java
+END
+BankServiceAsync.java
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/tellis/JMT/!svn/ver/32/JMT-Bank/src/jmt/bank/client/BankServiceAsync.java
+END
+SecureContent.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/tellis/JMT/!svn/ver/32/JMT-Bank/src/jmt/bank/client/SecureContent.java
+END
+IndexPanel.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/tellis/JMT/!svn/ver/33/JMT-Bank/src/jmt/bank/client/IndexPanel.java
+END

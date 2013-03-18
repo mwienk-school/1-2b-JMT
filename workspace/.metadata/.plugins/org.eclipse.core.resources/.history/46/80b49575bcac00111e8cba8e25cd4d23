@@ -1,0 +1,32 @@
+package jmt.bank.homebanking;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import jmt.bank.shared.BankService;
+import jmt.bank.shared.TransactionException;
+
+@SuppressWarnings("serial")
+public class CheckBalanceServlet extends HomeBankingServlet {
+
+	public void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		if (this.isAuthorized(req, resp)) {
+			try {
+				float balance = BankService.getInstance().getBalance((String) req.getSession().getAttribute("hbaccount"));
+				req.setAttribute("result", "Your current balence is &euro; " + balance);
+			} catch (TransactionException e) {
+				req.setAttribute("error", e);
+			}
+
+			// forward to JSP
+			RequestDispatcher dispatcher = req
+					.getRequestDispatcher("/WEB-INF/jquery.jsp");
+			dispatcher.forward(req, resp);
+		}
+	}
+
+}

@@ -1,0 +1,16 @@
+package jmt.test;
+
+public class Test {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		TestBeans testBeans = new TestBeans();
+		testBeans.start();
+		
+		TestBankService testBankService = new TestBankService();
+		testBankService.start();
+	}
+
+}

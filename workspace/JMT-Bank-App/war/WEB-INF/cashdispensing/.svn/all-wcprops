@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/tellis/JMT/!svn/ver/100/JMT-Bank-App/war/WEB-INF/cashdispensing
+END
+login.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/tellis/JMT/!svn/ver/86/JMT-Bank-App/war/WEB-INF/cashdispensing/login.jsp
+END
+withdraw.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/tellis/JMT/!svn/ver/86/JMT-Bank-App/war/WEB-INF/cashdispensing/withdraw.jsp
+END
+deposit.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/tellis/JMT/!svn/ver/86/JMT-Bank-App/war/WEB-INF/cashdispensing/deposit.jsp
+END
+index.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/tellis/JMT/!svn/ver/100/JMT-Bank-App/war/WEB-INF/cashdispensing/index.jsp
+END

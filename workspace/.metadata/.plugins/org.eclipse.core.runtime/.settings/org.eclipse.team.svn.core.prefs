@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+externalMigrateFromAuthorizationDatabase/isMigrated=true
+migrateFromAuthorizationDatabase/isMigrated=true
+repositories/60261843c0ac00111d8dbd53e8f89a4c=60261843c0ac00111d8dbd53e8f89a4c;https\://tellis.sourcerepo.com/tellis/JMT;https\://tellis.sourcerepo.com/tellis/JMT;branches;tags;trunk;true;5a223ed3-164e-4c03-98ce-0ad6012fea58;https\://tellis.sourcerepo.com/tellis/JMT;;false;;;0
+repositories/80e4f2b9e89500111730cff1623fb1fb=80e4f2b9e89500111730cff1623fb1fb;https\://tellis.sourcerepo.com/tellis/JMT;https\://tellis.sourcerepo.com/tellis/JMT;branches;tags;trunk;true;5a223ed3-164e-4c03-98ce-0ad6012fea58;https\://tellis.sourcerepo.com/tellis/JMT;;false;<https\://tellis.sourcerepo.com\:443> tellis.sourcerepo.com;;0

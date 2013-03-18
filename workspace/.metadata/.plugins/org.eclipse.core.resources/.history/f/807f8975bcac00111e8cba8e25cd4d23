@@ -1,0 +1,72 @@
+package jmt.bank.shared;
+
+import com.example.*;
+
+public class BankService implements Authentication, Transaction {
+	private static BankService singleton;
+	
+	private JMTBank client;
+
+	private BankService () {
+		client = new JMTBank_Service().getJMTBankSOAP();
+	}
+	
+	public static BankService getInstance() {
+		if(singleton == null) singleton = new BankService();
+		return singleton;
+	}
+	
+	@Override
+	public String transfer(String debitAccountId, String creditAccountId,
+			float amount) throws TransactionException {
+		//Connect to the soap server
+		String response = client.transfer(debitAccountId, creditAccountId, amount);
+		if(response != null && !response.equals("null")) {
+			throw new TransactionException(response);
+		} else {
+			return "Successfully transferred &euro; " + amount + " to " + creditAccountId;
+		} 
+	}
+
+	@Override
+	public String deposit(String creditAccountId, float amount) throws TransactionException {
+		//Connect to the soap server
+		String response = client.deposit(creditAccountId, amount);
+		if(response != null && !response.equals("null")) {
+			throw new TransactionException(response);
+		} else {
+			return "Deposited &euro; " + amount + " to your account!";
+		}
+	}
+	
+	@Override
+	public String withdraw(String debitAccountId, float amount) throws TransactionException {
+		//Connect to the soap server
+		String response = client.withdraw(debitAccountId, amount);
+		if(response != null && !response.equals("null")) {
+			throw new TransactionException(response);
+		} else {
+			return "Withdrawn &euro; " + amount + " from your account!";
+		}
+	}
+
+	@Override
+	public float getBalance(String accountId) throws TransactionException {
+		//Connect to the soap server
+		float response = client.getBalance(accountId);
+		return response;
+	}
+
+	@Override
+	public Client authenticateClient(String username, String password) throws AuthenticationException {
+		//Connect to the soap server
+		Client response = client.authenticateHBClient(username, password);
+		return response;
+	}
+
+	@Override
+	public Client authenticateCard(String cardId, String PIN) throws AuthenticationException {
+		Client response = client.authenticateCDClient(cardId, PIN);
+		return response;
+	}
+}

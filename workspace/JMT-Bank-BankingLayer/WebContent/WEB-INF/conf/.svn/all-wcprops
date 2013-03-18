@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/tellis/JMT/!svn/ver/64/JMT-Bank-BankingLayer/WebContent/WEB-INF/conf
+END
+commons-logging.properties
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/tellis/JMT/!svn/ver/64/JMT-Bank-BankingLayer/WebContent/WEB-INF/conf/commons-logging.properties
+END
+log4j.properties
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/tellis/JMT/!svn/ver/64/JMT-Bank-BankingLayer/WebContent/WEB-INF/conf/log4j.properties
+END
+axis2.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/tellis/JMT/!svn/ver/64/JMT-Bank-BankingLayer/WebContent/WEB-INF/conf/axis2.xml
+END
+axis2.policy
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/tellis/JMT/!svn/ver/64/JMT-Bank-BankingLayer/WebContent/WEB-INF/conf/axis2.policy
+END

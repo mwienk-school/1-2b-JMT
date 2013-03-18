@@ -1,0 +1,5 @@
+PREF_VM_INSTALL_SYSTEM_PROPERTY.org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType.1336131655949.java.specification.version=1.7
+PREF_VM_INSTALL_SYSTEM_PROPERTY.org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType.1336145137613.java.specification.version=1.6
+PREF_VM_INSTALL_SYSTEM_PROPERTY.org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType.1336321994713.java.specification.version=1.6
+eclipse.preferences.version=1
+org.eclipse.jdt.launching.PREF_VM_XML=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\n<vmSettings defaultVM\="57,org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType13,1336321994713" defaultVMConnector\="">\n<vmType id\="org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType">\n<vm id\="1336131655949" name\="java-7-oracle" path\="/usr/lib/jvm/java-7-oracle"/>\n<vm id\="1336145137613" name\="java-6-openjdk-amd64" path\="/usr/lib/jvm/java-1.6.0-openjdk-amd64"/>\n<vm id\="1336321994713" name\="jdk1.6.0_32" path\="/home/mark/Apps/Java/jdk1.6.0_32"/>\n</vmType>\n</vmSettings>\n

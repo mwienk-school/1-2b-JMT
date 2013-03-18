@@ -1,0 +1,89 @@
+/** Add css rules here for your application. */
+
+
+/** Example rules used by the template application (remove for your app) */
+div {
+	width: 100%;
+	align: center;
+}
+
+div#wrapper {
+	position: absolute;
+	top: 0px;
+}
+
+/** Header **/
+div#header {
+	background-color: #ccc;
+}
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+  color: #777777;
+  margin: 0;
+  text-align: center;
+}
+h2#subtitle {
+	font-size: 1.5em;
+	font-weight:bold;
+	color: #999;
+	text-align:center;
+}
+/** Content **/
+div#content * {
+	margin: auto;
+	text-align: center;
+}
+
+/** Login form **/
+table.login {
+	margin: auto;
+	text-align: center;
+}
+table.login .gwt-TextBox, table.login .gwt-PasswordTextBox {
+	width: 180px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 5px;
+	margin: 5px;
+	padding: 4px;
+}
+.sendButton {
+  display: block;
+  font-size: 16pt;
+}
+
+/** Most GWT widgets already have a style name defined */
+.gwt-DialogBox {
+  width: 400px;
+}
+
+.dialogVPanel {
+  margin: 5px;
+}
+
+.serverResponseLabelError {
+  color: red;
+}
+
+/** Set ids using widget.getElement().setId("idOfElement") */
+#closeButton {
+  margin: 15px 6px 6px;
+}
+
+.welcome-label {
+ font-weight: bold;
+ font-size: 20px;	
+}
+
+.sendButton {
+ font-weight: bold;
+}
+
+#content .form .gwt-Label {
+ text-align: right;
+}
+
+#content .form .gwt-TextBox, #content .form .gwt-PasswordTextBox {
+ text-align: left;
+}

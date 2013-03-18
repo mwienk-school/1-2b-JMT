@@ -1,0 +1,200 @@
+package bank.banking;
+
+import java.rmi.Naming;
+import java.rmi.RemoteException;
+
+import bank.Account;
+import bank.BankService;
+import bank.access.DataAccess;
+import bank.access.DataAccessException;
+import bank.access.DataAccessImpl;
+
+public class TransactionProcessingImpl implements TransactionProcessing {
+	
+	/**
+	 * Returns the TransactionProcessing of the bank identified by bankCode
+	 * @param bankCode
+	 * @return
+	 * @throws RemoteException
+	 */
+	private static TransactionProcessing getRemoteTransactionProcessing(String bankCode) throws RemoteException {
+		String url = BankService.getBankService().getInterbank().lookupTransactionProcessor(bankCode);
+		System.out.println(url);
+		try {
+			return (TransactionProcessing) Naming.lookup(url);
+		} catch (Exception e) {
+			System.err.print("An error has occurred while looking for bank " + bankCode +":");
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@Override
+	public String transfer(String debitAccountId, String creditAccountId,
+			float amount) throws RemoteException, TransactionException {
+		String debitBank = debitAccountId.substring(0,3);
+		String creditBank = creditAccountId.substring(0,3);
+		
+		try {
+			// Prepare the Debit account (locally or remote)
+			if(debitBank.equals(BankService.BANK_ID)) {
+				prepareDebit(debitAccountId, creditAccountId, amount);
+			} else {
+				getRemoteTransactionProcessing(debitBank).prepareDebit(debitAccountId, creditAccountId, amount);
+			}
+			// Prepare the Credit account (locally or remote)
+			if(creditBank.equals(BankService.BANK_ID)) {
+				prepareCredit(debitAccountId, creditAccountId, amount);
+			} else {
+				getRemoteTransactionProcessing(creditBank).prepareCredit(creditAccountId, debitAccountId, amount);
+			}
+			
+			// Commit the transactions
+			if(debitBank.equals(BankService.BANK_ID)) {
+				commit();
+			} else {
+				getRemoteTransactionProcessing(debitBank).commit();
+			}
+			if(creditBank.equals(BankService.BANK_ID)) {
+				commit();
+			} else {
+				getRemoteTransactionProcessing(creditBank).commit();
+			}
+		} catch (Exception e) {
+			// Something went wrong, rollback the entire operation
+			if(debitBank.equals(BankService.BANK_ID)) {
+				rollback();
+			} else {
+				getRemoteTransactionProcessing(debitBank).rollback();
+			}
+			if(creditBank.equals(BankService.BANK_ID)) {
+				rollback();
+			} else {
+				getRemoteTransactionProcessing(creditBank).rollback();
+			}
+			throw new TransactionException("The transaction went wrong, a rollback is issued.");
+		}
+		return null;
+	}
+
+	@Override
+	public String deposit(String creditAccountId, float amount)
+			throws RemoteException, TransactionException {
+		String bankCode = creditAccountId.substring(0, 3);
+		if(bankCode.equals(BankService.BANK_ID)) {
+			// The account is in this bank, deposit money to the account
+			BankService.getBankService().getTrans().deposit(creditAccountId, amount);
+		} else {
+			// Connect to the InterBank to retrieve the account's bank
+			getRemoteTransactionProcessing(bankCode).deposit(creditAccountId, amount);
+		}
+		return null;
+	}
+
+	@Override
+	public String withdraw(String debitAccountId, float amount)
+			throws RemoteException, TransactionException {
+		String bankCode = debitAccountId.substring(0, 3);
+		if(bankCode.equals(BankService.BANK_ID)) {
+			// The account is in this bank, deposit money to the account
+			BankService.getBankService().getTrans().withdraw(debitAccountId, amount);
+		} else {
+			// Connect to the InterBank to retrieve the account's bank
+			getRemoteTransactionProcessing(bankCode).withdraw(debitAccountId, amount);
+		}
+		return null;
+	}
+
+	@Override
+	public float getBalance(String accountId) throws RemoteException,
+			TransactionException {
+		float result = 0;
+		String bankCode = accountId.substring(0, 3);
+		if(bankCode.equals(BankService.BANK_ID)) {
+			// The account is in this bank, retrieve the balance
+			result = BankService.getBankService().getTrans().getBalance(accountId);
+		} else {
+			// Connect to the InterBank to retrieve the account's bank
+			result = getRemoteTransactionProcessing(bankCode).getBalance(accountId);
+		}
+		return result;
+	}
+
+	@Override
+	public void prepareDebit(String debitAccountId, String creditAccountId,
+			float amount) throws RemoteException, TransactionException {
+		DataAccess dataAccess = DataAccessImpl.getInstance();
+		Account debitAccount = null;
+		
+		try {
+			debitAccount = dataAccess.getAccount(debitAccountId);
+			if (debitAccount == null) {
+				throw new TransactionException("Debit account ID is invalid");
+			}
+			
+			// check if balance of debit account is not too low
+			if (debitAccount.getBalance() < amount) {
+				throw new TransactionException("Balance of debit account is too low for transfer");
+			}
+			
+			// debit from debit account			
+			dataAccess.debitAccount(debitAccountId, amount);
+			
+		} catch (DataAccessException e) {
+			try {
+				dataAccess.rollbackTransaction();
+			} catch (DataAccessException ex) {
+				// TODO Auto-generated catch block
+				throw new TransactionException(e.getMessage());
+			}
+			throw new TransactionException(e.getMessage());
+		}
+	}
+
+	@Override
+	public void prepareCredit(String creditAccountId, String debitAccountId,
+			float amount) throws RemoteException, TransactionException {
+		DataAccess dataAccess = DataAccessImpl.getInstance();
+		Account creditAccount = null;
+		
+		try {
+			creditAccount = dataAccess.getAccount(creditAccountId);
+			if (creditAccount == null) {
+				throw new TransactionException("Credit account ID is invalid");
+			}
+			
+			// credit to credit account			
+			dataAccess.creditAccount(debitAccountId, amount);
+			
+		} catch (DataAccessException e) {
+			try {
+				dataAccess.rollbackTransaction();
+			} catch (DataAccessException ex) {
+				// TODO Auto-generated catch block
+				throw new TransactionException(e.getMessage());
+			}
+			throw new TransactionException(e.getMessage());
+		}
+
+	}
+
+	@Override
+	public void commit() throws RemoteException, TransactionException {
+		DataAccess dataAccess = DataAccessImpl.getInstance();
+		try {
+			dataAccess.commitTransaction();
+		} catch (DataAccessException e) {
+			throw new TransactionException(e.getMessage());
+		}
+	}
+
+	@Override
+	public void rollback() throws RemoteException, TransactionException {
+		DataAccess dataAccess = DataAccessImpl.getInstance();
+		try {
+			dataAccess.rollbackTransaction();
+		} catch (DataAccessException e) {
+			throw new TransactionException(e.getMessage());
+		}
+	}
+}

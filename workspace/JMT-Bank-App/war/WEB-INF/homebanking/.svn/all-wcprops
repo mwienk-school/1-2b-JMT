@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/tellis/JMT/!svn/ver/100/JMT-Bank-App/war/WEB-INF/homebanking
+END
+login.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/tellis/JMT/!svn/ver/86/JMT-Bank-App/war/WEB-INF/homebanking/login.jsp
+END
+transfer.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/tellis/JMT/!svn/ver/86/JMT-Bank-App/war/WEB-INF/homebanking/transfer.jsp
+END
+index.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/tellis/JMT/!svn/ver/100/JMT-Bank-App/war/WEB-INF/homebanking/index.jsp
+END

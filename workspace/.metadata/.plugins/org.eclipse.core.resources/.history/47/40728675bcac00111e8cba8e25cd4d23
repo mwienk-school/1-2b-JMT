@@ -1,0 +1,324 @@
+package jmt.test;
+
+import jmt.bank.beans.Account;
+import jmt.bank.shared.*;
+
+public class TestBankService {
+	BankService bankService = null;
+	
+	public void start () {
+		Account.createAccounts();
+		bankService = BankService.getInstance();
+		
+		System.out.println("------------------------");
+		System.out.println("Testing BankService");
+				
+		System.out.println("------------------------");
+		System.out.println("Testing: authenticateClient");
+		System.out.println("------------------------");
+		
+		testAuthenticateClient();
+		
+		System.out.println("------------------------");
+		System.out.println("Testing: authenticateCard");
+		System.out.println("------------------------");
+		
+		testAuthenticateCard();
+		
+		System.out.println("------------------------");
+		System.out.println("Testing: getBalance");
+		System.out.println("------------------------");
+		
+		testGetBalance();
+		
+		System.out.println("------------------------");
+		System.out.println("Testing: withdraw");
+		System.out.println("------------------------");
+		
+		testWithdraw();
+		
+		System.out.println("------------------------");
+		System.out.println("Testing: deposit");
+		System.out.println("------------------------");
+		
+		testDeposit();
+		
+		System.out.println("------------------------");
+		System.out.println("Testing: transfer");
+		System.out.println("------------------------");
+		
+		testTransfer();
+	}
+	
+	private void testTransfer () {
+		// first set balance
+		Account account = Account.getAccount("123456789");
+		account.setBalance(950);
+		
+		Account account2 = Account.getAccount("987654321");
+		account2.setBalance(950);
+		
+		// test successful transfer
+		System.out.println("testTransfer: successful transfer:");
+		try {
+			bankService.transfer("123456789", "987654321", 50);
+			if (bankService.getBalance("123456789") == 900 && bankService.getBalance("987654321") == 1000) {
+				System.out.println("Test result: Success");					
+			} else {
+				System.out.println("Test result: FAILED");
+				System.out.println("Expected result: 900, 1000");
+				System.out.println("Actual result: " + bankService.getBalance("123456789") + ", " 
+				+ bankService.getBalance("987654321"));
+			}
+		} catch (Exception e) {
+			System.out.println("Test result: FAILED");
+			System.out.println("Expected result: 900, 1000");
+			System.out.println("Actual result: exception: " + e.getMessage());
+		}	
+		
+		account.setBalance(950);
+		account2.setBalance(950);
+		
+		// test too big transfer
+		System.out.println("testTransfer: too big transfer:");
+		try {
+			bankService.transfer("123456789", "987654321", 5000);
+			System.out.println("Test result: FAILED");
+			System.out.println("Expected result: TransactionException");
+			System.out.println("Actual result: no exception");
+		} catch (TransactionException e) {
+			System.out.println("Test result: Success");	
+		} catch (Exception e) {
+			System.out.println("Test result: FAILED");
+			System.out.println("Expected result: TransactionException");
+			System.out.println("Actual result: exception: " + e.getMessage());
+		}	
+		
+		// test invalid credit account
+		System.out.println("testTransfer: invalid credit account:");
+		try {
+			bankService.transfer("123456789", "0000", 50);
+			System.out.println("Test result: FAILED");
+			System.out.println("Expected result: TransactionException");
+			System.out.println("Actual result: no exception");
+		} catch (TransactionException e) {
+			System.out.println("Test result: Success");	
+		} catch (Exception e) {
+			System.out.println("Test result: FAILED");
+			System.out.println("Expected result: TransactionException");
+			System.out.println("Actual result: exception: " + e.getMessage());
+		}
+		
+		// test invalid debit account
+		System.out.println("testTransfer: invalid debit account:");
+		try {
+			bankService.transfer("0000", "987654321", 50);
+			System.out.println("Test result: FAILED");
+			System.out.println("Expected result: TransactionException");
+			System.out.println("Actual result: no exception");
+		} catch (TransactionException e) {
+			System.out.println("Test result: Success");	
+		} catch (Exception e) {
+			System.out.println("Test result: FAILED");
+			System.out.println("Expected result: TransactionException");
+			System.out.println("Actual result: exception: " + e.getMessage());
+		}
+	}
+	
+	private void testDeposit () {
+		// first set balance
+		Account account = Account.getAccount("123456789");
+		account.setBalance(950);
+		
+		// test successful deposit
+		System.out.println("testDeposit: successful deposit:");
+		try {
+			bankService.deposit("123456789", 50);
+			if (bankService.getBalance("123456789") == 1000) {
+				System.out.println("Test result: Success");					
+			} else {
+				System.out.println("Test result: FAILED");
+				System.out.println("Expected result: new balance = 1000");
+				System.out.println("Actual result: new balance = " + bankService.getBalance("123456789"));
+			}
+		} catch (Exception e) {
+			System.out.println("Test result: FAILED");
+			System.out.println("Expected result: new balance = 1000");
+			System.out.println("Actual result: exception: " + e.getMessage());
+		}
+		
+		// test invalid account
+		System.out.println("testDeposit: invalid account");
+		try {
+			bankService.deposit("0000", 50);
+			System.out.println("Test result: FAILED");
+			System.out.println("Expected result: TransactionException");
+			System.out.println("Actual result: no exception");
+		} catch (TransactionException e) {
+			System.out.println("Test result: Success");	
+		} catch (Exception e) {
+			System.out.println("Test result: FAILED");
+			System.out.println("Expected result: TransactionException");
+			System.out.println("Actual result: Exception: " + e.getMessage());
+		}
+	}
+	
+	private void testWithdraw () {
+		// first set balance
+		Account account = Account.getAccount("123456789");
+		account.setBalance(950);
+		
+		// test successful withdraw
+		System.out.println("testWithdraw: successful withdraw:");
+		try {
+			bankService.withdraw("123456789", 50);
+			if (bankService.getBalance("123456789") == 900) {
+				System.out.println("Test result: Success");					
+			} else {
+				System.out.println("Test result: FAILED");
+				System.out.println("Expected result: new balance = 900");
+				System.out.println("Actual result: new balance = " + bankService.getBalance("123456789"));
+			}
+		} catch (Exception e) {
+			System.out.println("Test result: FAILED");
+			System.out.println("Expected result: new balance = 900");
+			System.out.println("Actual result: exception: " + e.getMessage());
+		}
+		
+		// test too big withdraw
+		System.out.println("testWithdraw: too big withdraw:");
+		try {
+			bankService.withdraw("123456789", 5000);
+			System.out.println("Test result: FAILED");
+			System.out.println("Expected result: TransactionException");
+			System.out.println("Actual result: no exception");
+		} catch (Exception e) {
+			System.out.println("Test result: Success");				
+		}
+		
+		// test invalid account
+		System.out.println("testwithdraw: invalid account");
+		try {
+			bankService.withdraw("0000", 50);
+			System.out.println("Test result: FAILED");
+			System.out.println("Expected result: TransactionException");
+			System.out.println("Actual result: no exception");
+		} catch (TransactionException e) {
+			System.out.println("Test result: Success");	
+		} catch (Exception e) {
+			System.out.println("Test result: FAILED");
+			System.out.println("Expected result: TransactionException");
+			System.out.println("Actual result: Exception: " + e.getMessage());
+		}
+		
+	}
+	
+	private void testGetBalance () {
+		// first set balance
+		Account account = Account.getAccount("123456789");
+		account.setBalance(950);
+		
+		// test get balance
+		System.out.println("testGetBalance: ");
+		try {
+			if (bankService.getBalance("123456789") == 950) {
+				System.out.println("Test result: Success");					
+			} else {
+				System.out.println("Test result: FAILED");
+				System.out.println("Expected result: 950");
+				System.out.println("Actual result: " + bankService.getBalance("123456789"));
+			}
+		} catch (Exception e) {
+			System.out.println("Test result: FAILED");
+			System.out.println("Expected result: 950");
+			System.out.println("Actual result: exception: " + e.getMessage());
+		}
+		
+		// test invalid account
+		System.out.println("testGetBalance: invalid account");
+		try {
+			bankService.getBalance("0000");
+			System.out.println("Test result: FAILED");
+			System.out.println("Expected result: TransactionException");
+			System.out.println("Actual result: no exception");
+		} catch (TransactionException e) {
+			System.out.println("Test result: Success");	
+		} catch (Exception e) {
+			System.out.println("Test result: FAILED");
+			System.out.println("Expected result: TransactionException");
+			System.out.println("Actual result: Exception: " + e.getMessage());
+		}
+	
+	}
+	
+	private void testAuthenticateClient () {
+		// test successful authentication
+		System.out.println("testAuthenticateClient: successful authentication: ");
+		try {
+			bankService.authenticateClient("user1", "pass1");
+			System.out.println("Test result: Success");					
+		} catch (Exception e) {
+			System.out.println("Test result: FAILED");
+			System.out.println("Expected result: no exception");
+			System.out.println("Actual result: exception: " + e.getMessage());
+		}
+		
+		// test invalid username
+		System.out.println("testAuthenticateClient: invalid username: ");
+		try {
+			bankService.authenticateClient("invalidUser", "pass1");
+			System.out.println("Test result: FAILED");
+			System.out.println("Expected result: AuthenticationException");
+			System.out.println("Actual result: no exception");							
+		} catch (AuthenticationException e) {
+			System.out.println("Test result: Success");	
+		}
+		
+		// test invalid password
+		System.out.println("testAuthenticateClient: invalid password: ");
+		try {
+			bankService.authenticateClient("user1", "invalid-pass");
+			System.out.println("Test result: FAILED");
+			System.out.println("Expected result: AuthenticationException");
+			System.out.println("Actual result: no exception");							
+		} catch (AuthenticationException e) {
+			System.out.println("Test result: Success");	
+		}
+	}
+	
+	private void testAuthenticateCard () {
+		// test successful authentication
+		System.out.println("testAuthenticateCard: successful authentication: ");
+		try {
+			bankService.authenticateCard("card1", "1234");
+			System.out.println("Test result: Success");					
+		} catch (Exception e) {
+			System.out.println("Test result: FAILED");
+			System.out.println("Expected result: no exception");
+			System.out.println("Actual result: exception: " + e.getMessage());
+		}
+		
+		// test invalid card
+		System.out.println("testAuthenticateCard: invalid cardId: ");
+		try {
+			bankService.authenticateCard("invalid-card", "1234");
+			System.out.println("Test result: FAILED");
+			System.out.println("Expected result: AuthenticationException");
+			System.out.println("Actual result: no exception");							
+		} catch (AuthenticationException e) {
+			System.out.println("Test result: Success");	
+		}
+		
+		// test invalid pincode
+		System.out.println("testAuthenticateCard: invalid pincode: ");
+		try {
+			bankService.authenticateClient("card1", "invalid-pincode");
+			System.out.println("Test result: FAILED");
+			System.out.println("Expected result: AuthenticationException");
+			System.out.println("Actual result: no exception");							
+		} catch (AuthenticationException e) {
+			System.out.println("Test result: Success");	
+		}
+	}
+
+}

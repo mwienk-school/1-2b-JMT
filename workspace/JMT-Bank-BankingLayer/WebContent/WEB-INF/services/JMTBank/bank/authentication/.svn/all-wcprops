@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/tellis/JMT/!svn/ver/63/JMT-Bank-BankingLayer/bin/bank/authentication
+END
+AuthenticationException.class
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/tellis/JMT/!svn/ver/62/JMT-Bank-BankingLayer/bin/bank/authentication/AuthenticationException.class
+END
+Authentication.class
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/tellis/JMT/!svn/ver/62/JMT-Bank-BankingLayer/bin/bank/authentication/Authentication.class
+END
+AuthenticationImpl.class
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/tellis/JMT/!svn/ver/63/JMT-Bank-BankingLayer/bin/bank/authentication/AuthenticationImpl.class
+END

@@ -1,0 +1,22 @@
+package jmt.bank.homebanking;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@SuppressWarnings("serial")
+public class IndexServlet extends HomeBankingServlet {
+
+	public void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		if (this.isAuthorized(req, resp)) {
+			// forward to JSP
+			RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/homebanking/index.jsp");
+			dispatcher.forward(req, resp);
+		}
+	}
+
+}

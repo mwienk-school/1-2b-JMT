@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/tellis/JMT/!svn/ver/17/JMT-1/src/jmt/bank/shared
+END
+Transaction.java
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/tellis/JMT/!svn/ver/17/JMT-1/src/jmt/bank/shared/Transaction.java
+END
+Authentication.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/tellis/JMT/!svn/ver/17/JMT-1/src/jmt/bank/shared/Authentication.java
+END
+AuthenticationException.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/tellis/JMT/!svn/ver/17/JMT-1/src/jmt/bank/shared/AuthenticationException.java
+END
+TransactionException.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/tellis/JMT/!svn/ver/17/JMT-1/src/jmt/bank/shared/TransactionException.java
+END

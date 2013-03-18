@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/tellis/JMT/!svn/ver/111/JMT-Bank-BankingLayer/src/bank/access
+END
+DataAccess.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/tellis/JMT/!svn/ver/62/JMT-Bank-BankingLayer/src/bank/access/DataAccess.java
+END
+DataAccessImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/tellis/JMT/!svn/ver/111/JMT-Bank-BankingLayer/src/bank/access/DataAccessImpl.java
+END
+DataAccessException.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/tellis/JMT/!svn/ver/62/JMT-Bank-BankingLayer/src/bank/access/DataAccessException.java
+END

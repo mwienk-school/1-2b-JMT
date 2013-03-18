@@ -1,0 +1,5 @@
+grant  {
+	permission java.net.SocketPermission "*.ad.utwente.nl:1099", "connect";
+	permission java.net.SocketPermission "*.ad.utwente.nl", "accept";
+};
+	

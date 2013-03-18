@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<project name="Remote Fibonacci" default="" basedir=".">
+	<description>
+	    Ant build file to build and run the Remote Fibonacci example from Harold.
+		Steps in the development, deployment and execution process are
+		made explicit.
+	</description>
+	
+	<!-- set global properties for this build in a separate file -->
+	<property file="fibonacci.properties" />
+
+	<!-- target clean: remove all classes and files for download -->
+	<target name="clean">
+		<delete includeemptydirs="true">
+			<fileset dir="bin" includes="**/*" />
+		</delete>
+		<delete file="${dist}/${server_file}" />
+		<delete file="${server_download_dir}/${server_file}" />
+		<delete file="${client_download_dir}/${client_imports}" />
+	</target>
+
+	<!-- target compile_interface: compile only server interface definitions -->
+	<target name="compile_interface">
+		<!-- only works if Ant source search is disabled with empty sourcepath -->
+		<javac sourcepath="" srcdir="${sources}" destdir="${classes}">
+			<include name="${server_interface_files}" />
+			<exclude name="${client_package}, ${server_package}" />
+		</javac>
+	</target>
+	
+	<!-- target dist_interface: makes jar file and places it at a downloadable place -->
+	<target name="dist_interface" depends="compile_interface">
+		<jar destfile="${dist}/${server_file}" basedir="${classes}" excludes="${client_package}, ${server_package}" />
+		<copy file="${dist}/${server_file}" todir="${server_download_dir}" />
+	</target>
+
+	<!-- target compile_security: compile security package -->
+	<target name="compile_security">
+		<javac sourcepath="" srcdir="${sources}" destdir="${classes}" classpath="${classes}">
+			<include name="${security_package}" />
+		</javac>
+	</target>
+	
+	<!-- target compile_server: compile server implementation -->
+	<target name="compile_server" depends="dist_interface,compile_security">
+		<javac sourcepath="" srcdir="${sources}" destdir="${classes}" classpath="${classes}">
+			<include name="${server_package}" />
+			<exclude name="${server_interface_files}, ${client_package}" />
+		</javac>
+	</target>
+
+	<!-- target compile_client: compile client implementation -->
+	<target name="compile_client" depends="dist_interface">
+		<javac sourcepath="" srcdir="${sources}" destdir="${classes}" classpath="${dist}/${server_file}">
+			<include name="${client_package}" />
+			<exclude name="${server_interface_files}, ${server_package}" />
+		</javac>
+	</target>
+	
+	<!-- target dist_client: distribute exports of the client  -->
+	<target name="dist_client" depends="compile_client">
+		<copy file="${client_exports}" todir="${client_download_dir}" />
+	</target>
+
+	<!-- target start_registry: start the RMI registry -->
+	<target name="start_registry">
+		<exec executable="rmiregistry" spawn="true">
+		</exec>
+	</target>
+	
+	<!-- target start_server: start the server implementation -->
+	<target name="start_server" depends="compile_server">
+		<java classname="${server_impl}" classpath="${classes}" fork="true">
+			<!-- JVM arguments are necessary in order to allow code download 
+				and to define the security policy --> 
+			<jvmarg value="-Djava.rmi.server.codebase=${server_URL}" />
+			<jvmarg value="-Djava.rmi.server.hostname=${server_host}" />
+			<jvmarg value="-Djava.security.policy=server.policy" /> 
+		</java>
+	</target>
+	
+	<!-- target start_client: start the client implementation -->
+	<target name="start_client" depends="compile_client">
+		<java classname="${client_impl}" classpath="${classes}" fork="true">
+			<!-- These are application-specific arguments -->
+			<arg value="${server_host}" />
+			<arg value="Fibonacci" />
+			<arg value="0" />
+			<arg value="1" />
+			<arg value="2" />
+			<arg value="3" />
+			<arg value="4" />
+			<arg value="5" />
+			<arg value="56" />
+			<arg value="156" />
+			<!-- JVM arguments are necessary in order to define the security policy --> 
+			<jvmarg value="-Djava.security.policy=client.policy" />
+		</java>
+	</target>
+
+</project>

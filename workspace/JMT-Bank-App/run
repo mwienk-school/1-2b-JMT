@@ -1,0 +1,5 @@
+wsdluri='http://82.74.133.235:9080/JMT-Bank-BankingLayer/services/JMTBank?wsdl'
+gensrcdir='./src'
+targetpackage='com.example'
+genoutdir='./war/WEB-INF/classes'
+/home/mark/Apps/Java/jdk1.6.0_32/bin/wsimport -d "$genoutdir" -s "$gensrcdir" -p $targetpackage -keep "$wsdluri"

@@ -1,0 +1,152 @@
+
+package com.example;
+
+import javax.xml.bind.annotation.XmlRegistry;
+
+
+/**
+ * This object contains factory methods for each 
+ * Java content interface and Java element interface 
+ * generated in the com.example package. 
+ * <p>An ObjectFactory allows you to programatically 
+ * construct new instances of the Java representation 
+ * for XML content. The Java representation of XML 
+ * content can consist of schema derived interfaces 
+ * and classes representing the binding of schema 
+ * type definitions, element declarations and model 
+ * groups.  Factory methods for each of these are 
+ * provided in this class.
+ * 
+ */
+@XmlRegistry
+public class ObjectFactory {
+
+
+    /**
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.example
+     * 
+     */
+    public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link AuthenticateHBClient }
+     * 
+     */
+    public AuthenticateHBClient createAuthenticateHBClient() {
+        return new AuthenticateHBClient();
+    }
+
+    /**
+     * Create an instance of {@link TransferFault }
+     * 
+     */
+    public TransferFault createTransferFault() {
+        return new TransferFault();
+    }
+
+    /**
+     * Create an instance of {@link WithdrawResponse }
+     * 
+     */
+    public WithdrawResponse createWithdrawResponse() {
+        return new WithdrawResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetBalanceResponse }
+     * 
+     */
+    public GetBalanceResponse createGetBalanceResponse() {
+        return new GetBalanceResponse();
+    }
+
+    /**
+     * Create an instance of {@link TransferResponse }
+     * 
+     */
+    public TransferResponse createTransferResponse() {
+        return new TransferResponse();
+    }
+
+    /**
+     * Create an instance of {@link Withdraw }
+     * 
+     */
+    public Withdraw createWithdraw() {
+        return new Withdraw();
+    }
+
+    /**
+     * Create an instance of {@link Transfer }
+     * 
+     */
+    public Transfer createTransfer() {
+        return new Transfer();
+    }
+
+    /**
+     * Create an instance of {@link AuthenticateCDClientResponse }
+     * 
+     */
+    public AuthenticateCDClientResponse createAuthenticateCDClientResponse() {
+        return new AuthenticateCDClientResponse();
+    }
+
+    /**
+     * Create an instance of {@link AuthenticateHBClientResponse }
+     * 
+     */
+    public AuthenticateHBClientResponse createAuthenticateHBClientResponse() {
+        return new AuthenticateHBClientResponse();
+    }
+
+    /**
+     * Create an instance of {@link DepositResponse }
+     * 
+     */
+    public DepositResponse createDepositResponse() {
+        return new DepositResponse();
+    }
+
+    /**
+     * Create an instance of {@link Deposit }
+     * 
+     */
+    public Deposit createDeposit() {
+        return new Deposit();
+    }
+
+    /**
+     * Create an instance of {@link AuthenticateCDClient }
+     * 
+     */
+    public AuthenticateCDClient createAuthenticateCDClient() {
+        return new AuthenticateCDClient();
+    }
+
+    /**
+     * Create an instance of {@link Client }
+     * 
+     */
+    public Client createClient() {
+        return new Client();
+    }
+
+    /**
+     * Create an instance of {@link GetBalance }
+     * 
+     */
+    public GetBalance createGetBalance() {
+        return new GetBalance();
+    }
+
+    /**
+     * Create an instance of {@link TransferFault1 }
+     * 
+     */
+    public TransferFault1 createTransferFault1() {
+        return new TransferFault1();
+    }
+
+}

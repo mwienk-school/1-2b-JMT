@@ -1,0 +1,71 @@
+10
+
+dir
+115
+https://tellis.sourcerepo.com/tellis/JMT/JMT-Bank-BankingLayer/src
+https://tellis.sourcerepo.com/tellis/JMT
+
+
+
+2012-07-02T13:19:59.308042Z
+115
+DennisP
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+5a223ed3-164e-4c03-98ce-0ad6012fea58
+
+bank
+dir
+
+org
+dir
+
+server.policy
+file
+
+
+
+
+2012-07-02T14:42:29.000000Z
+e24bcfa7c6edd4aa1024e8564b54dfc9
+2012-07-02T13:19:59.308042Z
+115
+DennisP
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+577
+
+test
+dir
+

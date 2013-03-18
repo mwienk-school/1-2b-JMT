@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/tellis/JMT/!svn/ver/64/JMT-Bank-BankingLayer/WebContent/axis2-web/Error
+END
+GenError.html
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/tellis/JMT/!svn/ver/64/JMT-Bank-BankingLayer/WebContent/axis2-web/Error/GenError.html
+END
+error500.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/tellis/JMT/!svn/ver/64/JMT-Bank-BankingLayer/WebContent/axis2-web/Error/error500.jsp
+END
+AuthError.html
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/tellis/JMT/!svn/ver/64/JMT-Bank-BankingLayer/WebContent/axis2-web/Error/AuthError.html
+END
+error404.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/tellis/JMT/!svn/ver/64/JMT-Bank-BankingLayer/WebContent/axis2-web/Error/error404.jsp
+END

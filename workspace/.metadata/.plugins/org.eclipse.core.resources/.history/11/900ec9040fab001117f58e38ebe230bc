@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- This file was auto-generated from WSDL --><!-- by the Apache Axis2 version: 1.6.2  Built on : Apr 17, 2012 (05:33:49 IST) --><serviceGroup>
+    <service name="JMTBank">
+        <messageReceivers>
+            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-out" class="jmt.bank.soap.JMTBankMessageReceiverInOut"/>
+        </messageReceivers>
+        <parameter name="ServiceClass">jmt.bank.soap.JMTBankSkeleton</parameter>
+        <parameter name="useOriginalwsdl">true</parameter>
+        <parameter name="modifyUserWSDLPortAddress">true</parameter>
+        <operation name="deposit" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.example.org/JMTBank/">
+            <actionMapping>http://www.example.org/JMTBank/transfer</actionMapping>
+            <outputActionMapping>http://www.example.org/JMTBank/JMTBank/depositResponse</outputActionMapping>
+        </operation>
+        <operation name="withdraw" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.example.org/JMTBank/">
+            <actionMapping>http://www.example.org/JMTBank/transfer</actionMapping>
+            <outputActionMapping>http://www.example.org/JMTBank/JMTBank/withdrawResponse</outputActionMapping>
+        </operation>
+        <operation name="authenticateCDClient" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.example.org/JMTBank/">
+            <actionMapping>http://www.example.org/JMTBank/transfer</actionMapping>
+            <outputActionMapping>http://www.example.org/JMTBank/JMTBank/authenticateCDClientResponse</outputActionMapping>
+        </operation>
+        <operation name="transfer" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.example.org/JMTBank/">
+            <actionMapping>http://www.example.org/JMTBank/transfer</actionMapping>
+            <outputActionMapping>http://www.example.org/JMTBank/JMTBank/transferResponse</outputActionMapping>
+        </operation>
+        <operation name="getBalance" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.example.org/JMTBank/">
+            <actionMapping>http://www.example.org/JMTBank/transfer</actionMapping>
+            <outputActionMapping>http://www.example.org/JMTBank/JMTBank/getBalanceResponse</outputActionMapping>
+        </operation>
+        <operation name="authenticateHBClient" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://www.example.org/JMTBank/">
+            <actionMapping>http://www.example.org/JMTBank/transfer</actionMapping>
+            <outputActionMapping>http://www.example.org/JMTBank/JMTBank/authenticateHBClientResponse</outputActionMapping>
+        </operation>
+    </service>
+</serviceGroup>

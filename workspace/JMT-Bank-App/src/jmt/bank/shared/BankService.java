@@ -1,0 +1,120 @@
+package jmt.bank.shared;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import javax.xml.ws.soap.SOAPFaultException;
+
+import com.example.*;
+
+public class BankService implements Authentication, Transaction {
+	private static BankService singleton;
+	
+	private JMTBank client;
+	private JMTBank_Service soapService;
+	
+	private BankService(URL wsdlUrl) {
+		soapService = new JMTBank_Service(wsdlUrl);
+		client = soapService.getJMTBankSOAP();
+	}
+	
+	public static String getDefaultWsdlUrl () {
+		return "http://130.89.236.84:9080/JMT-Bank-BankingLayer/services/JMTBank?wsdl";
+	}
+	
+	public static BankService getInstance(Object objUrl) {
+		if (objUrl == null) {
+			objUrl = BankService.getDefaultWsdlUrl();
+		}
+		
+		String wsdlUrl = (String) objUrl;
+		
+		URL url = null;
+		try {
+			url = new URL(wsdlUrl);
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+		
+		if(singleton == null) singleton = new BankService(url);
+		return singleton;
+	}
+	
+	public static BankService getInstance() {	
+		return BankService.getInstance(null);
+	}
+	
+	@Override
+	public String transfer(String debitAccountId, String creditAccountId,
+			float amount) throws TransactionException {
+		//Connect to the soap server
+		try {
+			String response = client.transfer(debitAccountId, creditAccountId, amount);
+			if(response != null && !response.equals("null")) {
+				throw new TransactionException(response);
+			} else {
+				return "Successfully transferred &euro; " + amount + " to " + creditAccountId;
+			} 
+		} catch (SOAPFaultException e) {
+			throw new TransactionException(e.getMessage());
+		}
+	}
+
+	@Override
+	public String deposit(String creditAccountId, float amount) throws TransactionException {
+		//Connect to the soap server
+		try {
+			String response = client.deposit(creditAccountId, amount);
+			if(response != null && !response.equals("null")) {
+				throw new TransactionException(response);
+			} else {
+				return "Deposited &euro; " + amount + " to your account!";
+			}
+		} catch (SOAPFaultException e) {
+			throw new TransactionException(e.getMessage());
+		}
+	}
+	
+	@Override
+	public String withdraw(String debitAccountId, float amount) throws TransactionException {
+		//Connect to the soap server
+		try {
+			String response = client.withdraw(debitAccountId, amount);
+			if(response != null && !response.equals("null")) {
+				throw new TransactionException(response);
+			} else {
+				return "Withdrawn &euro; " + amount + " from your account!";
+			}
+		} catch (SOAPFaultException e) {
+			throw new TransactionException(e.getMessage());
+		}
+	}
+
+	@Override
+	public float getBalance(String accountId) throws TransactionException {
+		//Connect to the soap server
+		try {
+			return client.getBalance(accountId);
+		} catch (SOAPFaultException e) {
+			throw new TransactionException(e.getMessage());
+		}
+	}
+
+	@Override
+	public Client authenticateClient(String username, String password) throws AuthenticationException {
+		//Connect to the soap server
+		try {
+			return client.authenticateHBClient(username, password);
+		} catch (SOAPFaultException e) {
+			throw new AuthenticationException(e.getMessage());
+		}
+	}
+
+	@Override
+	public Client authenticateCard(String cardId, String PIN) throws AuthenticationException {
+		try {
+			return client.authenticateCDClient(cardId, PIN);
+		} catch (SOAPFaultException e) {
+			throw new AuthenticationException(e.getMessage());
+		}
+	}
+}

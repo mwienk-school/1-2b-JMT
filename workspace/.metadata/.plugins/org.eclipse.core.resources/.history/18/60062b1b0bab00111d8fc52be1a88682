@@ -1,0 +1,48 @@
+package bank;
+
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.rmi.server.UnicastRemoteObject;
+
+import bank.authentication.Authentication;
+import bank.authentication.AuthenticationImpl;
+import bank.banking.Transaction;
+import bank.banking.TransactionImpl;
+
+public class BankService {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		if (System.getSecurityManager() == null) {
+            System.setSecurityManager(new SecurityManager());
+        }
+		
+        try {
+            Authentication auth = new AuthenticationImpl();
+            Authentication stub =
+                (Authentication) UnicastRemoteObject.exportObject(auth, 0);
+            Registry registry = LocateRegistry.getRegistry();
+            registry.rebind("Authentication", stub);
+            System.out.println("AuthenticationImpl bound");
+        } catch (Exception e) {
+            System.err.println("AuthenticationImpl exception:");
+            e.printStackTrace();
+        }
+        
+        try {
+            Transaction trans = new TransactionImpl();
+            Transaction stub =
+                (Transaction) UnicastRemoteObject.exportObject(trans, 0);
+            Registry registry = LocateRegistry.getRegistry();
+            registry.rebind("Transaction", stub);
+            System.out.println("TransactionImpl bound");
+        } catch (Exception e) {
+            System.err.println("TransactionImpl exception:");
+            e.printStackTrace();
+        }
+
+	}
+
+}

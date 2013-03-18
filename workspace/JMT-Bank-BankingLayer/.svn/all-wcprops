@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/tellis/JMT/!svn/ver/115/JMT-Bank-BankingLayer
+END
+JMTBank.wsdl
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/tellis/JMT/!svn/ver/66/JMT-Bank-BankingLayer/JMTBank.wsdl
+END
+build.xml
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/tellis/JMT/!svn/ver/98/JMT-Bank-BankingLayer/build.xml
+END
+database2.sql
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/tellis/JMT/!svn/ver/114/JMT-Bank-BankingLayer/database2.sql
+END
+.project
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/tellis/JMT/!svn/ver/64/JMT-Bank-BankingLayer/.project
+END
+database.sql
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/tellis/JMT/!svn/ver/103/JMT-Bank-BankingLayer/database.sql
+END
+server.policy
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/tellis/JMT/!svn/ver/115/JMT-Bank-BankingLayer/server.policy
+END
+.classpath
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/tellis/JMT/!svn/ver/113/JMT-Bank-BankingLayer/.classpath
+END

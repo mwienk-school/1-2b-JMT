@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/tellis/JMT/!svn/ver/16/JMT-Bank/src/jmt/bank/beans
+END
+Account.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/tellis/JMT/!svn/ver/16/JMT-Bank/src/jmt/bank/beans/Account.java
+END
+BankCard.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/tellis/JMT/!svn/ver/16/JMT-Bank/src/jmt/bank/beans/BankCard.java
+END
+Client.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/tellis/JMT/!svn/ver/16/JMT-Bank/src/jmt/bank/beans/Client.java
+END

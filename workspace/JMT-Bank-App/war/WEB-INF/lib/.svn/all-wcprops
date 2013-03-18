@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/tellis/JMT/!svn/ver/81/JMT-Bank-App/war/WEB-INF/lib
+END
+datanucleus-jpa-1.1.5.jar
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/tellis/JMT/!svn/ver/81/JMT-Bank-App/war/WEB-INF/lib/datanucleus-jpa-1.1.5.jar
+END
+appengine-api-1.0-sdk-1.6.5.jar
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/tellis/JMT/!svn/ver/81/JMT-Bank-App/war/WEB-INF/lib/appengine-api-1.0-sdk-1.6.5.jar
+END
+appengine-api-labs-1.6.5.jar
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/tellis/JMT/!svn/ver/81/JMT-Bank-App/war/WEB-INF/lib/appengine-api-labs-1.6.5.jar
+END
+jdo2-api-2.3-eb.jar
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/tellis/JMT/!svn/ver/81/JMT-Bank-App/war/WEB-INF/lib/jdo2-api-2.3-eb.jar
+END
+geronimo-jpa_3.0_spec-1.1.1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/tellis/JMT/!svn/ver/81/JMT-Bank-App/war/WEB-INF/lib/geronimo-jpa_3.0_spec-1.1.1.jar
+END
+jsr107cache-1.1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/tellis/JMT/!svn/ver/81/JMT-Bank-App/war/WEB-INF/lib/jsr107cache-1.1.jar
+END
+appengine-jsr107cache-1.6.5.jar
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/tellis/JMT/!svn/ver/81/JMT-Bank-App/war/WEB-INF/lib/appengine-jsr107cache-1.6.5.jar
+END
+gwt-servlet.jar
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/tellis/JMT/!svn/ver/81/JMT-Bank-App/war/WEB-INF/lib/gwt-servlet.jar
+END
+geronimo-jta_1.1_spec-1.1.1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/tellis/JMT/!svn/ver/81/JMT-Bank-App/war/WEB-INF/lib/geronimo-jta_1.1_spec-1.1.1.jar
+END
+datanucleus-appengine-1.0.10.final.jar
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/tellis/JMT/!svn/ver/81/JMT-Bank-App/war/WEB-INF/lib/datanucleus-appengine-1.0.10.final.jar
+END
+datanucleus-core-1.1.5.jar
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/tellis/JMT/!svn/ver/81/JMT-Bank-App/war/WEB-INF/lib/datanucleus-core-1.1.5.jar
+END
